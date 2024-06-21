@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <style>
+        .accordion {
+            background-color: #f1f1f1;
+            color: #333;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: background-color 0.4s;
+        }
+
+        .accordion:hover {
+            background-color: #ddd;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+        }
+
+        /* Additional styles for form elements */
+        .report-form {
+            margin-top: 10px;
+        }
+
+        .report-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .report-form input[type="text"],
+        .report-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .report-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+
+        .report-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Dashboard</h1>
+
+        <!-- Report Section -->
+        <button class="accordion">Report</button>
+        <div class="panel">
+            <section class="dashboard-section">
+                <form action="{% url 'submit_report' %}" method="post" class="report-form">
+                    {% csrf_token %}
+                    <div>
+                        <label for="report-title">Title:</label>
+                        <input type="text" id="report-title" name="title" required>
+                    </div>
+                    <div>
+                        <label for="report-content">Content:</label>
+                        <textarea id="report-content" name="content" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Contact Security Section -->
+        <button class="accordion">Contact Security</button>
+        <div class="panel">
+            <section class="dashboard-section">
+                <p>Contact our security team here:</p>
+                <p>Phone: +603 8312 5803</p>
+                <p>Location: Security Building, Multimedia University, Persiaran Multimedia, 63100 Cyberjaya</p>
+            </section>
+        </div>
+
+        <!-- Edit Profile Section -->
+        <button class="accordion">Edit Profile</button>
+        <div class="panel">
+            <section class="dashboard-section">
+                <p>Update your profile information here.</p>
+            </section>
+        </div>
+
+        <!-- Logout Form -->
+        <form action="{% url 'logout' %}" method="post" id="logout-form">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to toggle the accordion panels
+        var accordions = document.getElementsByClassName("accordion");
+
+        for (var i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

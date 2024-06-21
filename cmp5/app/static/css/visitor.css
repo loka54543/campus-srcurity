@@ -1,0 +1,61 @@
+/* static/css/visitor.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #E0F7FA;
+}
+
+.container {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.container h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.visitor-input {
+  display: block;
+  width: calc(100% - 40px);
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background-color: #4E4E4E;
+  color: #fff;
+  outline: none;
+  text-align: center;
+}
+
+.visitor-input::placeholder {
+  color: #fff;
+}
+
+.submit-button {
+  display: block;
+  width: calc(100% - 40px);
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background-color: #A8A8A8;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #8E8E8E;
+}

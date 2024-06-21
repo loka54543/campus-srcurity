@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script>
+        function validateForm() {
+            var userid = document.getElementById("userid").value;
+            var password = document.getElementById("password").value;
+
+            if (userid.trim() === '' || password.trim() === '') {
+                // Display error message
+                var errorElement = document.getElementById("error-message");
+                errorElement.innerText = "Please enter both User ID and Password.";
+                return false;  // Prevent form submission
+            }
+
+            return true;  // Form submission will proceed
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        
+        {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <label for="userid">User ID:</label>
+            <input type="text" id="userid" name="userid" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        
+        <p id="error-message" class="error-message"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/qr_page.css' %}">
+</head>
+<body>
+    <div class="qr-container">
+        <div class="header">
+            <button onclick="window.history.back();">MENU</button>
+        </div>
+        <div class="qr-code">
+            <img src="{% url 'qr_page' %}" alt="QR Code">
+            <div class="timer">00 : 30</div>
+        </div>
+        <div class="footer">
+            <img src="{% static 'images/clock_image.png' %}" alt="Clock">
+        </div>
+    </div>
+</body>
+</html>

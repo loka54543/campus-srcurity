@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Security Management System</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Campus Security Management System</h1>
+    </div>
+    <div class="main-content">
+      <img src="/static/images/main_image.jpg" alt="main  Image">
+      <div class="buttons">
+        <form action="{% url 'login' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">LOGIN</button>
+        </form>
+        <form action="{% url 'visitor' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">VISITOR</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

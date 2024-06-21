@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>
+        
+     
+        
+        <!-- Sections -->
+        <section class="dashboard-section">
+            <h2>Report</h2>
+            <!-- Add your report content here -->
+            <p>This is where you can view and manage reports.</p>
+        </section>
+        
+        <section class="dashboard-section">
+            <h2>Contact Security</h2>
+            <!-- Add Contact Security content here -->
+            <p>Contact our security team here.</p>
+        </section>
+        
+        <section class="dashboard-section">
+            <h2>qr code</h2>
+            <!-- Add Edit Profile content here -->
+            <p>scan the qr to fill the form </p>
+        </section>  
+         <!-- Logout Button -->
+        <form action="{% url 'logout' %}" method="post" id="logout-form">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
